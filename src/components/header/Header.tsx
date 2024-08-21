@@ -2,16 +2,20 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FaGithub } from "react-icons/fa";
+import { MdMenu } from "react-icons/md";
 
 export const Header = () => {
   const currentPath = usePathname();
   return (
-    <nav className="flex items-center justify-center bg-primary py-4">
+    <nav className="flex gap-6 items-center justify-start md:justify-center bg-primary py-2 sm:py-4 px-6">
+      <button className="sm:hidden">
+        <MdMenu size={24} />
+      </button>
       <ul className="flex gap-4 items-center">
         <li className="border-2 rounded-md py-2 px-1 font-bold ">
           <Link href={"/"}>DevJourney</Link>
         </li>
-        <li>
+        <li className="hidden sm:block">
           <Link
             href={"/"}
             data-active={currentPath === "/"}
@@ -20,7 +24,7 @@ export const Header = () => {
             Página inicial
           </Link>
         </li>
-        <li>
+        <li className="hidden sm:block">
           <Link
             href={"/cursos"}
             data-active={currentPath === "/cursos"}
@@ -29,7 +33,7 @@ export const Header = () => {
             Cursos
           </Link>
         </li>
-        <li>
+        <li className="hidden sm:block">
           <Link
             href={"https://github.com/Renanmdr/learning-platform-nextjs"}
             target="_blank"
@@ -40,6 +44,7 @@ export const Header = () => {
           </Link>
         </li>
       </ul>
+      <h1 className="sm:hidden">DevJourney - Página inicial</h1>
     </nav>
   );
 };
